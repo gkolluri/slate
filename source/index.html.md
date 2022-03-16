@@ -2,13 +2,10 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - response
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='mailto:namaste@kulfyapp.com'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -20,32 +17,18 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: Documentation for the Kulfy API
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the [Kulfy](https://kulfyapp.com/) API! You can use our API to access Kulfy API endpoints, which can get information on various GIFs from different languages in our database.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
 # With shell, you can just pass the correct header with each request
@@ -53,17 +36,12 @@ curl "api_endpoint_here" \
   -H "Authorization: meowmeowmeow"
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
 
 > Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Kulfy uses API keys to allow access to the API. You can email us at [namaste@kulfyapp.com](mailto:namaste@kulfyapp.com)  to request an API key.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Kulfy expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
 `Authorization: meowmeowmeow`
 
@@ -71,175 +49,259 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# Search
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
+## Get Trending Keywords
 
 > The above command returns JSON structured like this:
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+```response
+Example: https://gateway.kulfyapp.com/V3/kulfy/getTrendingKeywords?language=Telugu&transliteration=en&client=web
+
 ```
 
-This endpoint retrieves all kittens.
+```json
+{
+    "product": "Kulfy App",
+    "version": 2,
+    "result": true,
+    "message": "Trending success message",
+    "trending_words_en": [
+        "Trending",
+        "lists",
+        "RRR",
+        "Latest",
+        "popular",
+        "uploads",
+        "test",
+        "ipl",
+        "thankyou",
+        "devotional",
+        "sticker",
+        "dialogues",
+        "dance",
+        "actor",
+        "actress",
+        "attitude",
+        "text",
+        "reactions",
+        "girls",
+        "animation"
+    ],
+    "trending_words": [
+        "Trending",
+        "lists",
+        "RRR",
+        "Latest",
+        "popular",
+        "uploads",
+        "test",
+        "ipl",
+        "thankyou",
+        "devotional",
+        "sticker",
+        "dialogues",
+        "dance",
+        "actor",
+        "actress",
+        "attitude",
+        "text",
+        "reactions",
+        "girls",
+        "animation"
+    ]
+}
+```
+
+This endpoint retrieves all trending keywords per language.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://gateway.kulfyapp.com/V3/kulfy/getTrendingKeywords`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Default | Options |Description
+--------- | ------- | ------- | -----------
+language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
+transliteration | en | en|Currenlty only english is supported
+client | web | web or keyboard | select clients 
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — Added Kulfy API Key to all API's
 </aside>
 
-## Get a Specific Kitten
+## Get Kulfys By Keyword
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
 
 > The above command returns JSON structured like this:
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+```response
+Example: https://gateway.kulfyapp.com/V3/gifs/search?keyword=funny&skip=0&limit=2&language=Hindi&sort=latest&client=keyboard&content=gif
+
 ```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+    "product": "Kulfy App",
+    "version": 3,
+    "default_gif": "",
+    "share_message": "",
+    "no_results_gif": "https://media2.giphy.com/media/tAS9GGJfEYL5e/giphy.webp",
+    "results_count": 428,
+    "data": [
+        {
+            "content_type": "gif",
+            "height": "1080",
+            "width": "1080",
+            "name_en": "A laugh in a minute",
+            "category_en": [
+                "ss rajamouli",
+                "jakkanna",
+                "laugh",
+                "navvu",
+                "smile",
+                "laughter",
+                "funny",
+                "reaction",
+                "expression",
+                "joke",
+                "chuckle",
+                "burst",
+                "gif",
+                "trending",
+                "crack up",
+                "fun",
+                "happy",
+                ""
+            ],
+            "name": "A laugh in a minute",
+            "category": [
+                "ss rajamouli",
+                "jakkanna",
+                "laugh",
+                "navvu",
+                "smile",
+                "laughter",
+                "funny",
+                "reaction",
+                "expression",
+                "joke",
+                "chuckle",
+                "burst",
+                "gif",
+                "trending",
+                "crack up",
+                "fun",
+                "happy",
+                ""
+            ],
+            "kulfy_id": "3C4CXO",
+            "sticker_url": "https://media.kulfyapp.com/3C4CXO/3C4CXO-sticker.webp",
+            "image_url": "https://media.kulfyapp.com/3C4CXO/3C4CXO-sticker.webp",
+            "gif_url": "https://media.kulfyapp.com/3C4CXO/3C4CXO-360.gif",
+            "video_url": "https://media.kulfyapp.com/3C4CXO/3C4CXO.mp4",
+            "share_url": "https://media.kulfyapp.com/3C4CXO/3C4CXO-shared.gif",
+            "video_share_url": "https://media.kulfyapp.com/3C4CXO/3C4CXO.mp4",
+            "deeplink": "https://kulfyapp.com/kulfy/3C4CXO"
+        },
+        {
+            "content_type": "gif",
+            "height": "1080",
+            "width": "1080",
+            "name_en": "Is it",
+            "category_en": [
+                "radheshyam",
+                "pooja hegde",
+                "avuna",
+                "is it",
+                "true",
+                "real",
+                "ohh",
+                "ok",
+                "funny",
+                "prabhas",
+                "main ishq mein hoon",
+                "uv creations",
+                "darling",
+                "rebelstar",
+                "radhakrishnakumar",
+                "manoj paramahamsa",
+                "radhe shyam",
+                "telugu best gifs",
+                "hd gifs",
+                "tollywood hq gifs",
+                "telugu movie gifs",
+                "panindia",
+                "astrology",
+                "vikramaditya",
+                "palmist",
+                "gif",
+                "latest",
+                ""
+            ],
+            "name": "Is it",
+            "category": [
+                "radheshyam",
+                "pooja hegde",
+                "avuna",
+                "is it",
+                "true",
+                "real",
+                "ohh",
+                "ok",
+                "funny",
+                "prabhas",
+                "main ishq mein hoon",
+                "uv creations",
+                "darling",
+                "rebelstar",
+                "radhakrishnakumar",
+                "manoj paramahamsa",
+                "radhe shyam",
+                "telugu best gifs",
+                "hd gifs",
+                "tollywood hq gifs",
+                "telugu movie gifs",
+                "panindia",
+                "astrology",
+                "vikramaditya",
+                "palmist",
+                "gif",
+                "latest",
+                ""
+            ],
+            "kulfy_id": "3C4CX2",
+            "sticker_url": "https://media.kulfyapp.com/3C4CX2/3C4CX2-sticker.webp",
+            "image_url": "https://media.kulfyapp.com/3C4CX2/3C4CX2-sticker.webp",
+            "gif_url": "https://media.kulfyapp.com/3C4CX2/3C4CX2-360.gif",
+            "video_url": "https://media.kulfyapp.com/3C4CX2/3C4CX2.mp4",
+            "share_url": "https://media.kulfyapp.com/3C4CX2/3C4CX2-shared.gif",
+            "video_share_url": "https://media.kulfyapp.com/3C4CX2/3C4CX2.mp4",
+            "deeplink": "https://kulfyapp.com/kulfy/3C4CX2"
+        }
+    ],
+    "message": "",
+    "success": true
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint retrieves Kulfys based on a keyword in a specified language.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://gateway.kulfyapp.com/V3/gifs/search`
 
-### URL Parameters
+Parameter | Default | Options |Description
+--------- | ------- | ------- | -----------
+keyword | '' | |Set the keyword
+content | gif,video | gif,video,audio,image,sticker| gif is recommended by default
+language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
+sort | poular | popular or latest | Results sorted by favorites vs time
+skip | 0 | | Enter a value to skip for pagination
+limit | 25 |  | Enter a value to limit for pagination
+transliteration | en | en|Currenlty only english is supported
+client | web | web or keyboard | select clients 
+transliteration | en | en|Currenlty only english is supported
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
 
