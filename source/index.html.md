@@ -33,7 +33,7 @@ Welcome to the [Kulfy](https://kulfyapp.com/) API! You can use our API to access
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
+  -H "apikey: meowmeowmeow"
 ```
 
 
@@ -43,7 +43,7 @@ Kulfy uses API keys to allow access to the API. You can email us at [namaste@kul
 
 Kulfy expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`apikey: meowmeowmeow`
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
@@ -56,7 +56,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://gateway.kulfyapp.com/V3/kulfy/getTrendingKeywords?language=Telugu&transliteration=en&client=web
+Example: https://partnerapis.kulfyapp.com/V3/kulfy/getTrendingKeywords?language=Telugu&transliteration=en&client=web
 
 ```
 
@@ -117,7 +117,7 @@ This endpoint retrieves all trending keywords per language.
 
 ### HTTP Request
 
-`GET https://gateway.kulfyapp.com/V3/kulfy/getTrendingKeywords`
+`GET https://partnerapis.kulfyapp.com/V3/kulfy/getTrendingKeywords`
 
 ### Query Parameters
 
@@ -137,7 +137,7 @@ Remember — Added Kulfy API Key to all API's
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://gateway.kulfyapp.com/V3/gifs/search?keyword=funny&skip=0&limit=2&language=Hindi&sort=latest&client=keyboard&content=gif
+Example: https://partnerapis.kulfyapp.com/V3/gifs/search?keyword=funny&skip=0&limit=2&language=Hindi&sort=latest&client=keyboard&content=gif
 
 ```
 
@@ -290,7 +290,7 @@ This endpoint retrieves Kulfys based on a keyword in a specified language.
 
 ### HTTP Request
 
-`GET https://gateway.kulfyapp.com/V3/gifs/search`
+`GET https://partnerapis.kulfyapp.com/V3/gifs/search`
 
 Parameter | Default | Options |Description
 --------- | ------- | ------- | -----------
