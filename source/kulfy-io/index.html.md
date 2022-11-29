@@ -22,7 +22,7 @@ meta:
 
 # Introduction
 
-Welcome to the [Kulfy](https://kulfyapp.com/) API! You can use our API to access Kulfy API endpoints, which can get information on various GIFs from different languages in our database.
+Welcome to the [Kulfy IO](https://beta.kulfy.io/) API! You can use our API to access Kulfy Keboard API endpoints, which can get information on Keyboard configuration and service APIs.
 
 
 # Authentication
