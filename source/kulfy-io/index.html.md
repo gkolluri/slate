@@ -107,7 +107,7 @@ Example: https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration
         "movie",
         "relationships",
         "reactions",
-        "politicians
+        "politicians"
      ]
    }
 }
@@ -278,6 +278,10 @@ Remember — Add Kulfy API Key to all API's
 
 ```response
 Example: https://api.kulfy.io/v1/kulfycloud/getTrendingKeywords 
+
+or
+
+https://api.kulfyapp.com/V3/kulfy/getTrendingKeywords?language=telugu&transliteration=en&client=ios
 
 ```
 
