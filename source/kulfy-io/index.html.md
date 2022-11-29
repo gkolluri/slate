@@ -73,42 +73,34 @@ Example: https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration
         "displayMenu":true,
         "menuItems":["ABC","GIF","NFTs","Settings"]
         },
-      "langauge":["telugu"],
-      "content":["gif"],
-      "default_search_keyword":"trending",
-      "default_list": [
-        "Recent",
-        "Favorite",
-        "Trending",
-        "Latest",
-        "popular",
-        "uploads",
-        "ipl",
-        "thankyou",
-        "devotional",
-        "sticker",
-        "dialogues",
-        "dance",
-        "actor",
-        "actress",
-        "attitude",
-        "text",
-        "reactions",
-        "girls",
-        "animation"
+      "abc":{},
+      "gif":{
+        "langauge":["telugu"],
+        "content":["gif"],
+        "default_search_keyword":"trending",
+        "default_list": [
+           "Recent",
+           "Favorite",
+           "Trending",
+           "Latest",
+           "popular",
+           "uploads"
           ],
-     "concepts_list":[
-        "heroes",
-        "heroines",
-        "prime",
-        "netflix",
-        "aha",
-        "comedy",
-        "movie",
-        "relationships",
-        "reactions",
-        "politicians"
-     ]
+        "concepts_list":[
+           "heroes",
+          "heroines",
+          "prime",
+          "netflix",
+          "aha",
+          "comedy",
+          "movie",
+          "relationships",
+          "reactions",
+          "politicians"
+        ]
+      },
+      "nfts":{},
+      "settings":{}
    }
 }
 ```
