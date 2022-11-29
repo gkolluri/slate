@@ -49,14 +49,154 @@ Kulfy expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Search
+# Kulfy IO APIs
 
-## Get Trending Keywords
+
+
+## Get Keyboard Configuration
 
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://partnerapis.kulfyapp.com/V3/kulfy/getTrendingKeywords?language=Telugu&transliteration=en&client=web
+Example: https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration
+
+```
+
+```json
+{
+    "product": "Kulfy IO",
+    "version": 1,
+    "result": true,
+    "message": "success message",
+    "config":{
+      "menu":{
+        "displayMenu":true,
+        "menuItems":["ABC","GIF","NFTs","Settings"]
+        },
+      "langauge":["telugu"],
+      "content":["gif"],
+      "default_search_keyword":"trending",
+      "default_list": [
+        "Recent",
+        "Favorite",
+        "Trending",
+        "Latest",
+        "popular",
+        "uploads",
+        "ipl",
+        "thankyou",
+        "devotional",
+        "sticker",
+        "dialogues",
+        "dance",
+        "actor",
+        "actress",
+        "attitude",
+        "text",
+        "reactions",
+        "girls",
+        "animation"
+          ],
+     "concepts_list":[
+        "heroes",
+        "heroines",
+        "prime",
+        "netflix",
+        "aha",
+        "comedy",
+        "movie",
+        "relationships",
+        "reactions",
+        "politicians
+     ]
+   }
+}
+```
+
+This endpoint retrieves all trending keywords per language.
+
+### HTTP Request 
+
+`GET https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration`
+
+### Query Parameters
+
+Parameter | Default | Options |Description
+--
+
+<aside class="success">
+Remember — Add Kulfy API Key to all API's
+</aside>
+
+## Get Keyboard Concepts 
+
+> The above command returns JSON structured like this:
+
+```response
+Example: https://api.kulfy.io/v1/kulfycloud/getConcepts?language=telugu
+
+at kulfy : https://api.kulfyapp.com/v5/concepts/getConcepts?language=telugu
+
+```
+
+```json
+{
+    "product": "Kulfy IO",
+    "version": 1,
+    "result": true,
+    "message": "success message",
+    "data": [
+        {
+            "name": "Heroes",
+            "concept": "heroes",
+            "title": "Top Telugu Heroes GIFs from Tollywood in 2021 by Kulfy Users",
+            "short": "Heroes of Tollywood",
+            "cover": "https://media.kulfyapp.com/0HX46B/0HX46B-360.gif",
+            "description": "GIFs, stickers and videos of movies your favorite actors",
+            "language": [
+                "TELUGU"
+            ]
+        },
+        {
+            "name": "Heroines",
+            "concept": "heroines",
+            "title": "Top Telugu Herioines in Tollywood in 2021 by Kulfy Users",
+            "short": "Heroines of Tollywood",
+            "cover": "https://media.kulfyapp.com/wQjJOE/wQjJOE-360.gif",
+            "description": "GIFs stickers and videos of your favorite Actresses in Telugu",
+            "language": [
+                "TELUGU"
+            ]
+        }
+    ]
+}
+```
+
+This endpoint retrieves all trending keywords per language.
+
+### HTTP Request
+
+`GET https://api.kulfy.io/v1/kulfycloud/getConcepts?language=telugu`
+
+### Query Parameters
+
+Parameter | Default | Options |Description
+--------- | ------- | ------- | -----------
+language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
+
+<aside class="success">
+Remember — Add Kulfy API Key to all API's
+</aside>
+
+
+## Get Categories by Concept
+
+> The above command returns JSON structured like this:
+
+```response
+Example: https://api.kulfy.io/v1/kulfycloud/getCategories?language=telugu&&concept=mobilebrands
+or
+at Kulfy : https://api.kulfyapp.com/V2/categories/getCategories?language=telugu&&concept=mobilebrands
 
 ```
 
@@ -117,18 +257,74 @@ This endpoint retrieves all trending keywords per language.
 
 ### HTTP Request
 
-`GET https://partnerapis.kulfyapp.com/V3/kulfy/getTrendingKeywords`
+`GET https://api.kulfy.io/v1/kulfycloud/getCategories?language=telugu&&concept=mobilebrands`
 
 ### Query Parameters
 
 Parameter | Default | Options |Description
 --------- | ------- | ------- | -----------
 language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
-transliteration | en | en|Currenlty only english is supported
-client | web | web or keyboard | select clients 
+concept | *mandatory | Concept that user want to lookup
+
 
 <aside class="success">
-Remember — Added Kulfy API Key to all API's
+Remember — Add Kulfy API Key to all API's
+</aside>
+
+
+## Get Trending Keywords (default categories)
+
+> The above command returns JSON structured like this:
+
+```response
+Example: https://api.kulfy.io/v1/kulfycloud/getTrendingKeywords 
+
+```
+
+```json
+{
+    "product": "Kulfy IO",
+    "version": 1,
+    "result": true,
+    "message": "Trending success message",
+    "trending_words": [
+        "Trending",
+        "lists",
+        "RRR",
+        "Latest",
+        "popular",
+        "uploads",
+        "test",
+        "ipl",
+        "thankyou",
+        "devotional",
+        "sticker",
+        "dialogues",
+        "dance",
+        "actor",
+        "actress",
+        "attitude",
+        "text",
+        "reactions",
+        "girls",
+        "animation"
+    ]
+}
+```
+
+This endpoint retrieves all trending keywords per language.
+
+### HTTP Request
+
+`GET https://api.kulfy.io/v1/kulfycloud/getTrendingKeywords`
+
+### Query Parameters
+
+Parameter | Default | Options |Description
+--------- | ------- | ------- | -----------
+
+<aside class="success">
+Remember — Add Kulfy API Key to all API's
 </aside>
 
 ## Get Kulfys By Keyword
@@ -137,14 +333,19 @@ Remember — Added Kulfy API Key to all API's
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://partnerapis.kulfyapp.com/V3/gifs/search?client=keyboard&keyword=trending&skip=0&limit=2&language=Telugu,Tamil&content=gif
+
+Example: https://api.kulfy.io/v1/kulfycloud/search?keyword=trending&skip=0&limit=2&language=Telugu&content=gif
+
+or
+
+ https://partnerapis.kulfyapp.com/V3/gifs/search?client=keyboard&keyword=trending&skip=0&limit=2&language=Telugu,Tamil&content=gif
 
 ```
 
 ```json
 {
-    "product": "Kulfy App",
-    "version": 3,
+    "product": "Kulfy IO",
+    "version": 1,
     "default_gif": "",
     "share_message": "",
     "no_results_gif": "https://media2.giphy.com/media/tAS9GGJfEYL5e/giphy.webp",
@@ -248,7 +449,7 @@ This endpoint retrieves Kulfys based on a keyword in a specified language.
 
 ### HTTP Request
 
-`GET https://partnerapis.kulfyapp.com/V3/gifs/search`
+`GET https://api.kulfy.io/v1/kulfycloud/search`
 
 Parameter | Default | Options |Description
 --------- | ------- | ------- | -----------
@@ -258,8 +459,5 @@ language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
 sort | poular | popular or latest | Results sorted by favorites vs time
 skip | 0 | | Enter a value to skip for pagination
 limit | 25 |  | Enter a value to limit for pagination
-transliteration | en | en|Currenlty only english is supported
-client | web | web or keyboard | select clients 
-transliteration | en | en|Currenlty only english is supported
 
 
