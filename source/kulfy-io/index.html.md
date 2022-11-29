@@ -53,6 +53,46 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 
 
+## Get SDK Configuration
+
+> The above command returns JSON structured like this:
+
+```response
+Example: https://api.kulfy.io/v1/kulfycloud/getSDKConfiguration
+
+```
+
+```json
+{
+    "product": "Kulfy IO",
+    "version": 1,
+    "result": true,
+    "message": "success message",
+    "config":{
+      "api_endpoint":"https://api.kulfy.io",
+      "cdn_endpoint":"https://media.kulfy.io"
+      "settings":{}
+   }
+}
+```
+
+This endpoint retrieves configuration of the Kulfy SDK
+
+### HTTP Request 
+
+`GET https://api.kulfy.io/v1/kulfycloud/getSDKConfiguration`
+
+### Query Parameters
+
+Parameter | Default | Options |Description
+--
+
+<aside class="success">
+Remember — Add Kulfy API Key to all API's
+</aside>
+
+
+
 ## Get Keyboard Configuration
 
 > The above command returns JSON structured like this:
@@ -105,7 +145,7 @@ Example: https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration
 }
 ```
 
-This endpoint retrieves all trending keywords per language.
+This endpoint retrieves config of the client keyboard.
 
 ### HTTP Request 
 
@@ -164,7 +204,7 @@ at kulfy : https://api.kulfyapp.com/v5/concepts/getConcepts?language=telugu
 }
 ```
 
-This endpoint retrieves all trending keywords per language.
+This endpoint retrieves all concepts per language.
 
 ### HTTP Request
 
@@ -245,7 +285,7 @@ at Kulfy : https://api.kulfyapp.com/V2/categories/getCategories?language=telugu&
 }
 ```
 
-This endpoint retrieves all trending keywords per language.
+This endpoint retrieves all trending categories per concept with language preference.
 
 ### HTTP Request
 
@@ -308,7 +348,7 @@ https://api.kulfyapp.com/V3/kulfy/getTrendingKeywords?language=telugu&transliter
 }
 ```
 
-This endpoint retrieves all trending keywords per language.
+This endpoint retrieves default trending keywords per client.
 
 ### HTTP Request
 
