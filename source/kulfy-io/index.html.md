@@ -60,18 +60,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 Example: https://api.kulfy.io/v1/kulfycloud/createKeyboard
 
 ```
-Request Body
-```json
-{
-    "config":{
-      "type":"web2",
-      "content_type":["gif","video","image"],
-      "clients":["web","ios","android"],
-      "languages": ["Telugu","Hindi"],
-      "account": "xploree"
-   }
-}
-```
 
 Response Body
 ```json
@@ -100,7 +88,22 @@ This endpoint creates a unique keyboard ID and sends it in the response
 
 ### HTTP Request 
 
+
 `POST https://api.kulfy.io/v1/kulfycloud/createKeyboard`
+
+Request Body
+```json
+{
+    "config":{
+      "type":"web2",
+      "content_type":["gif","video","image"],
+      "clients":["web","ios","android"],
+      "languages": ["Telugu","Hindi"],
+      "account": "xploree"
+   }
+}
+
+```
 
 
 
