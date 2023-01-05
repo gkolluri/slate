@@ -52,13 +52,69 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 # Kulfy IO APIs
 
 
+## Create Keyboard
+
+> The above command returns JSON structured like this:
+
+```response
+Example: https://api.kulfy.io/v1/kulfycloud/createKeyboard
+
+```
+Request Body
+```json
+{
+    "config":{
+      "type":"web2",
+      "content_type":["gif","video","image"],
+      "clients":["web","ios","android"],
+      "languages": ["Telugu","Hindi"],
+      "account": "xploree"
+   }
+}
+```
+
+Response Body
+```json
+{
+  "product": "Kulfy IO",
+  "version": 1,
+  "result": true,
+  "message": "success message",
+  "config":{
+    "id": "keyboard-id",
+    "type":"web2",
+    "content_type":["gif","video","image"],
+    "clients":["web","ios","android"],
+    "languages": ["Telugu","Hindi"],
+    "account": "xploree",
+    "api_endpoint":"https://api.kulfy.io",
+    "cdn_endpoint":"https://media.kulfy.io",
+    "kulfy_sdk_version": "1.0",
+    "settings":{}
+  }
+}
+```
+
+
+This endpoint creates a unique keyboard ID and sends it in the response
+
+### HTTP Request 
+
+`POST https://api.kulfy.io/v1/kulfycloud/createKeyboard`
+
+
+
+<aside class="success">
+Remember — Add Kulfy API Key to all API's
+</aside>
+
 
 ## Get SDK Configuration
 
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://api.kulfy.io/v1/kulfycloud/getSDKConfiguration
+Example: https://api.kulfy.io/v1/kulfycloud/getSDKConfiguration?kid=keyboardID
 
 ```
 
@@ -78,18 +134,21 @@ Example: https://api.kulfy.io/v1/kulfycloud/getSDKConfiguration
 
 This endpoint retrieves configuration of the Kulfy SDK
 
-### HTTP Request 
+### HTTP Request
 
 `GET https://api.kulfy.io/v1/kulfycloud/getSDKConfiguration`
 
 ### Query Parameters
 
 Parameter | Default | Options |Description
---
+--------- | ------- | ------- | -----------
+kid     |  |  | unique keyboard id
+
 
 <aside class="success">
 Remember — Add Kulfy API Key to all API's
 </aside>
+
 
 
 
@@ -98,7 +157,7 @@ Remember — Add Kulfy API Key to all API's
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration
+Example: https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration?kid=keyboardID
 
 ```
 
@@ -109,6 +168,7 @@ Example: https://api.kulfy.io/v1/kulfycloud/getkeyboardConfiguration
     "result": true,
     "message": "success message",
     "config":{
+      "id": "keyboard-id",
       "menu":{
         "displayMenu":true,
         "menuItems":["ABC","GIF","NFTs","Settings"]
@@ -154,7 +214,8 @@ This endpoint retrieves config of the client keyboard.
 ### Query Parameters
 
 Parameter | Default | Options |Description
---
+--------- | ------- | ------- | -----------
+kid     |  |  | unique keyboard id
 
 <aside class="success">
 Remember — Add Kulfy API Key to all API's
@@ -165,9 +226,9 @@ Remember — Add Kulfy API Key to all API's
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://api.kulfy.io/v1/kulfycloud/getConcepts?language=telugu
+Example: https://api.kulfy.io/v1/kulfycloud/getConcepts?kid=keybaordID&language=telugu
 
-at kulfy : https://api.kulfyapp.com/v5/concepts/getConcepts?language=telugu
+at kulfy : https://api.kulfyapp.com/v5/concepts/getConcepts?l?kid=keybaordID&language=telugu
 
 ```
 
@@ -208,12 +269,13 @@ This endpoint retrieves all concepts per language.
 
 ### HTTP Request
 
-`GET https://api.kulfy.io/v1/kulfycloud/getConcepts?language=telugu`
+`GET https://api.kulfy.io/v1/kulfycloud/getConcepts`
 
 ### Query Parameters
 
 Parameter | Default | Options |Description
 --------- | ------- | ------- | -----------
+kid     |  |  | unique keyboard id
 language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
 
 <aside class="success">
@@ -226,9 +288,9 @@ Remember — Add Kulfy API Key to all API's
 > The above command returns JSON structured like this:
 
 ```response
-Example: https://api.kulfy.io/v1/kulfycloud/getCategories?language=telugu&&concept=mobilebrands
+Example: https://api.kulfy.io/v1/kulfycloud/getCategories?kid=keybaordID&language=telugu&&concept=mobilebrands
 or
-at Kulfy : https://api.kulfyapp.com/V2/categories/getCategories?language=telugu&&concept=mobilebrands
+at Kulfy : https://api.kulfyapp.com/V2/categories/getCategories?kid=keybaordID&language=telugu&&concept=mobilebrands
 
 ```
 
@@ -289,12 +351,13 @@ This endpoint retrieves all trending categories per concept with language prefer
 
 ### HTTP Request
 
-`GET https://api.kulfy.io/v1/kulfycloud/getCategories?language=telugu&&concept=mobilebrands`
+`GET https://api.kulfy.io/v1/kulfycloud/getCategories`
 
 ### Query Parameters
 
 Parameter | Default | Options |Description
 --------- | ------- | ------- | -----------
+kid     |  |  | unique keyboard id
 language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
 concept | *mandatory | Concept that user want to lookup
 
@@ -313,7 +376,7 @@ Example: https://api.kulfy.io/v1/kulfycloud/getTrendingKeywords
 
 or
 
-https://api.kulfyapp.com/V3/kulfy/getTrendingKeywords?language=telugu&transliteration=en&client=ios
+https://api.kulfyapp.com/V3/kulfy/getTrendingKeywords?kid=keybaordID&language=telugu&transliteration=en&client=ios
 
 ```
 
@@ -358,6 +421,7 @@ This endpoint retrieves default trending keywords per client.
 
 Parameter | Default | Options |Description
 --------- | ------- | ------- | -----------
+kid     |  |  | unique keyboard id
 
 <aside class="success">
 Remember — Add Kulfy API Key to all API's
@@ -370,11 +434,11 @@ Remember — Add Kulfy API Key to all API's
 
 ```response
 
-Example: https://api.kulfy.io/v1/kulfycloud/search?keyword=trending&skip=0&limit=2&language=Telugu&content=gif
+Example: https://api.kulfy.io/v1/kulfycloud/search?kid=keybaordID&keyword=trending&skip=0&limit=2&language=Telugu&content=gif
 
 or
 
- https://partnerapis.kulfyapp.com/V3/gifs/search?client=keyboard&keyword=trending&skip=0&limit=2&language=Telugu,Tamil&content=gif
+ https://partnerapis.kulfyapp.com/V3/gifs/search?kid=keybaordID&client=keyboard&keyword=trending&skip=0&limit=2&language=Telugu,Tamil&content=gif
 
 ```
 
@@ -489,11 +553,13 @@ This endpoint retrieves Kulfys based on a keyword in a specified language.
 
 Parameter | Default | Options |Description
 --------- | ------- | ------- | -----------
-keyword | '' | |Set the keyword
+keyword |  | |Set the keyword
+kid     |  |  | unique keyboard id
 content | gif,video | gif,video,audio,image,sticker| gif is recommended by default
 language | telugu | telugu,tamil,malayalam,hindi |Lanaguages to search
 sort | poular | popular or latest | Results sorted by favorites vs time
 skip | 0 | | Enter a value to skip for pagination
 limit | 25 |  | Enter a value to limit for pagination
+
 
 
